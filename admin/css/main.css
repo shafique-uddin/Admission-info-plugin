@@ -1,0 +1,94 @@
+#varsityinfowrap {
+    margin-top: 15PX;
+    margin-bottom: 50px;
+    margin-left: 12px;
+    overflow: hidden;
+    clear: both;
+}
+
+
+.mycampus-input-field input[type=text] {
+    width: 90%!important;
+    margin-bottom: 8px;
+    overflow: hidden;
+    clear: both;
+}
+
+.mycampus-title p {
+    margin: 0px;
+    overflow: hidden;
+    clear: both;
+}
+
+.mycampus-input-label label, .mycampus-title p {
+    line-height: 27px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 3px;
+    overflow: hidden;
+    clear: both;
+}
+
+.mycampus-input-field-radio {
+    margin-bottom: 8px;
+    margin-left: 10%;
+    overflow: hidden;
+    clear: both;
+}
+
+#wpfooter {
+    position: relative;
+    bottom: 0%;
+}
+
+
+#admission_info_save {
+    width: 200px;
+    /* height: 50px; */
+    background: green;
+    color: wheat;
+    font-weight: bold;
+}
+
+
+.admission-info-form-header {
+    display: block;
+    margin-bottom: 75px;
+    margin-top: 40px;
+}
+
+.admission-info-form-header .left-div {
+    float: left;
+    display: block;
+    position: relative;
+    left: 15px;
+}
+
+.admission-info-form-header .right-div {
+    float: right;
+    display: block;
+    position: relative;
+    right: 115px;
+}
+
+.admission-info-form-header .right-div a {
+    padding: 15px;
+    background: rgb(0, 255, 106);
+    text-decoration: none;
+    border: 1px solid rgb(89, 0, 255);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.admission-info-form-header .right-div a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.attachment th {
+    width: 20%!important;
+    margin-bottom: 8px;
+    overflow: hidden;
+    clear: both;
+}
