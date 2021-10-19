@@ -312,6 +312,32 @@ if(isset($_POST['admission_info_save'])){
         $universityName = sanitize_text_field( $_POST['unversity_name']);
         $unitName = sanitize_text_field( $_POST['unit_name']);
         $SscGpa = sanitize_text_field( $_POST['ssc_gpa']);
+
+
+        $totalArElement = (count($_POST['ssc_group'])); 
+
+        // Find out Group Section Array is empty or not
+        if($totalArElement>0){
+            $SscGrp = '';
+            
+            $counter = 0;
+            foreach ($_POST['ssc_group'] as $key => $convertToText) {
+                $counter ++;
+                    
+                $SscGrp .= sanitize_text_field($convertToText);
+
+                if ($counter == $totalArElement) {
+                    
+                }
+                else {
+                    $SscGrp .= ', ';
+                }
+            }
+        }
+        else {
+            add_action( 'admin_notices', 'empty_field_callable_hndler' );
+        }
+
         $SscGrp = $_POST['ssc_group'] ? sanitize_text_field( $_POST['ssc_group']):' ';
         $HscGpa = sanitize_text_field( $_POST['hsc_gpa']);
         $HscGrp = $_POST['hsc_group'] ? sanitize_text_field( $_POST['hsc_group']) : ' ';
