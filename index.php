@@ -243,10 +243,10 @@ function admission_info_file_attachment_frm_hndlr(){
  */
 function admission_info_admin_page_CSS_JS_include_hndlr($screen){
     if(('toplevel_page_admissioninfo' == $screen)||('admission-info_page_add-new-varsity-info' == $screen) || ('admission-info_page_admission-info-file-attachment' == $screen)){
-        wp_enqueue_style( 'admission-info-custom-css', plugin_dir_url( __FILE__ ).'admin/css/main.css', null, time() );
-        wp_enqueue_style( 'admission-info-bootstrap-css-handler', '//cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css');
-        wp_enqueue_style( 'admission-info-date-picker-stylesheet', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
-        wp_enqueue_style( 'admission-info-date-picker-demo-stylesheet', '/resources/demos/style.css');
+       wp_enqueue_style( 'admission-info-custom-css', plugin_dir_url( __FILE__ ).'admin/css/main.css', null, time() );
+       wp_enqueue_style( 'admission-info-bootstrap-css-handler', '//cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css');
+       wp_enqueue_style( 'admission-info-date-picker-stylesheet', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+       wp_enqueue_style( 'admission-info-date-picker-demo-stylesheet', '/resources/demos/style.css');
        wp_enqueue_script( 'admission-info-main-jquery', plugin_dir_url( __FILE__ ).'admin/js/main.js', null , null , true );
        wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-1.12.4.js', array('json2'), '1.12.4', true );
        wp_enqueue_script( 'jquery-ui-datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array('jquery'), '1.11.4', true );
