@@ -314,10 +314,11 @@ if(isset($_POST['admission_info_save'])){
         $SscGpa = sanitize_text_field( $_POST['ssc_gpa']);
 
 
-        $totalArElement = (count($_POST['ssc_group'])); 
 
-        // Find out Group Section Array is empty or not
-        if($totalArElement>0){
+        $totalSscArElement = (count($_POST['ssc_group'])); 
+
+        // Find out SSC Group Section Array is empty or not
+        if($totalSscArElement>0){
             $SscGrp = '';
             
             $counter = 0;
@@ -326,7 +327,7 @@ if(isset($_POST['admission_info_save'])){
                     
                 $SscGrp .= sanitize_text_field($convertToText);
 
-                if ($counter == $totalArElement) {
+                if ($counter == $totalSscArElement) {
                     
                 }
                 else {
@@ -338,9 +339,34 @@ if(isset($_POST['admission_info_save'])){
             add_action( 'admin_notices', 'empty_field_callable_hndler' );
         }
 
-        $SscGrp = $_POST['ssc_group'] ? sanitize_text_field( $_POST['ssc_group']):' ';
+
+        $totalHscArElement = (count($_POST['hsc_group'])); 
+
+        // Find out SSC Group Section Array is empty or not
+        if($totalHscArElement>0){
+            $HscGrp = '';
+            
+            $counter = 0;
+            foreach ($_POST['hsc_group'] as $key => $convertToText) {
+                $counter ++;
+                    
+                $HscGrp .= sanitize_text_field($convertToText);
+
+                if ($counter == $totalHscArElement) {
+                    
+                }
+                else {
+                    $HscGrp .= ', ';
+                }
+            }
+        }
+        else {
+            add_action( 'admin_notices', 'empty_field_callable_hndler' );
+        }
+
+        // $SscGrp = $_POST['ssc_group'] ? sanitize_text_field( $_POST['ssc_group']):' ';
         $HscGpa = sanitize_text_field( $_POST['hsc_gpa']);
-        $HscGrp = $_POST['hsc_group'] ? sanitize_text_field( $_POST['hsc_group']) : ' ';
+        // $HscGrp = $_POST['hsc_group'] ? sanitize_text_field( $_POST['hsc_group']) : ' ';
         $totalGpa = sanitize_text_field( $_POST['total_gpa']);
         $admissionDate = sanitize_text_field( $_POST['admission_date']);
         $post_publish_date = sanitize_text_field( $_POST['publish_date']);
