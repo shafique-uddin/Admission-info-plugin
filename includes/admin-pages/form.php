@@ -60,7 +60,7 @@ if(isset($_GET['edit'])){
         <?php 
             $ssc_group_list = array(
                 'all' => 'All',
-                'scienceBH' => 'Science (Biology + Higher Math)',
+                'scienceHB' => 'Science (Higher Math + Biology)',
                 'scienceM' => 'Science (Higher Math)',
                 'scienceB' => 'Science (Biology)',
                 'arts' => 'Arts',
@@ -97,7 +97,7 @@ if(isset($_GET['edit'])){
         $hsc_group_list = array(
 
             'all' => 'All',
-            'scienceBH' => 'Science (Biology + Higher Math)',
+            'scienceHB' => 'Science (Higher Math + Biology)',
             'scienceM' => 'Science (Higher Math)',
             'scienceB' => 'Science (Biology)',
             'arts' => 'Arts',
