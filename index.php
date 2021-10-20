@@ -23,7 +23,7 @@
  
  // ADMISSION INFO DB VERSION
  global $admission_info_define_db_version;
- $admission_info_define_db_version = '1.1.1';
+ $admission_info_define_db_version = '1.1.2';
  
 /**
 * Activate the plugin.
