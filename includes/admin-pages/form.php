@@ -27,6 +27,35 @@ if(isset($_GET['edit'])){
 <div id="varsityinfowrap" class="my-form-wrap"> 
 
 <form method="POST">
+
+
+<?php
+
+$args = array(
+    'post_type'=> 'post',
+    'orderby'    => 'ID',
+    'post_status' => 'publish',
+    'order'    => 'DESC',
+    'posts_per_page' => -1 // this will retrive all the post that is published 
+    );
+    $result = new WP_Query( $args );
+    while($result->have_posts()): $result->the_post(); 
+    
+    echo "<pre>";
+    var_dump(get_posts());
+    echo "</pre>";
+
+endwhile;
+
+die();
+
+?>
+
+
+
+
+
+
 <div class="mycampus-field mycampus-input-label">
     <div class="mycampus-title">
         <label for="university_name">University Name</label>
