@@ -69,7 +69,8 @@ if(isset($_GET['edit'])){
 
             foreach ($ssc_group_list as $ssc_group_list_key => $ssc_group_list_value) {
                 if(isset($mylink->sscGROUP)){
-                    $selected = ("$mylink->sscGROUP" == "$ssc_group_list_key") ? "checked" : "" ;
+                    $selected = (preg_match("/$ssc_group_list_key/", $mylink->sscGROUP)) ? "checked" : "" ;
+                    // $selected = ("$mylink->sscGROUP" == "$ssc_group_list_key") ? "checked" : "" ;
                 } else {
                     $selected = '';
                 }
@@ -105,7 +106,8 @@ if(isset($_GET['edit'])){
 
         foreach ($hsc_group_list as $hsc_group_list_key => $hsc_group_list_value) { 
             if(isset($mylink->hscGROUP)){
-                $selected = ("$mylink->hscGROUP" == "$hsc_group_list_key") ? "checked" : "" ;
+                // $selected = ("$mylink->hscGROUP" == "$hsc_group_list_key") ? "checked" : "" ;
+                $selected = (preg_match("/$hsc_group_list_key/", $mylink->hscGROUP)) ? "checked" : "" ;
             } else {
                 $selected = '';
             }
