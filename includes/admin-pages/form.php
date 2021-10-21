@@ -6,6 +6,31 @@ if(isset($_GET['edit'])){
     $tbl_name = $wpdb->prefix.'admission_info_db';
     $mylink = $wpdb->get_row( "SELECT * FROM $tbl_name WHERE id = $post_id_no" );
 }
+
+
+
+
+
+
+
+// $args = array(
+//         'post_type'=> 'post',
+//         'orderby'    => 'ID',
+//         'post_status' => 'publish',
+//         'order'    => 'DESC',
+//         'posts_per_page' => -1
+//     );
+// $result = new WP_Query( $args );
+//     while($result->have_posts()): $result->the_post(); 
+
+//     echo "<pre>";
+//     var_dump(get_posts( ));
+//     echo "</pre>";
+       
+//     endwhile; 
+
+//     wp_die();
+
 ?>
 
 
@@ -48,7 +73,7 @@ if(isset($_GET['edit'])){
                 if($result->have_posts()):
                     while($result->have_posts()): $result->the_post(); 
                         ?>
-                        <option value="<?php the_title(); echo ','; the_guid(); ?>"><?php the_title(); ?></option>
+                        <option value="<?php the_title(); echo ',-'; the_guid(); ?>"><?php the_title(); ?></option>
                         <?php
                     endwhile; 
                 else:?>

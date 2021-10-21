@@ -37,6 +37,7 @@ function admission_info_installing_db() {
     $basic_admission_info_start_tbl_query = "CREATE TABLE $admission_info_details_tbl (
         id INT(250) NOT NULL AUTO_INCREMENT,
         universityName VARCHAR(250) NOT NULL,
+        link VARCHAR(250) NOT NULL,
         unitName VARCHAR(250) NOT NULL,
         sscGPA FLOAT(20) NOT NULL,
         sscGROUP VARCHAR(250) NOT NULL,
@@ -58,6 +59,7 @@ function admission_info_installing_db() {
         $admission_info_details_tbl,
         array(
             'universityName' => 'Sample Data',
+            'link' => 'Sample Link',
             'unitName' => 'Sample Data',
             'sscGPA' => 5.00,
             'sscGROUP' => 'Sample Data',
@@ -135,6 +137,7 @@ function admission_info_update_checking_hndl(){
         $query = "CREATE TABLE $db_tbl_name (
             id INT(250) NOT NULL AUTO_INCREMENT,
             universityName TEXT(250) NOT NULL,
+            link VARCHAR(250) NOT NULL,
             unitName TEXT(250) NOT NULL,
             sscGPA FLOAT(20) NOT NULL,
             sscGROUP TEXT(250) NOT NULL,
@@ -155,6 +158,7 @@ function admission_info_update_checking_hndl(){
             $db_tbl_name,
             array(
                 'universityName' => 'Sample Data',
+                'link' => 'Sample Link',
                 'unitName' => 'Sample Data',
                 'sscGPA' => 5.00,
                 'sscGROUP' => 'Sample Data',
@@ -361,14 +365,17 @@ function hsc_group_data_collection(){
 
 // FORM SUBMIT AND CHECKING
 if(isset($_POST['admission_info_save'])){
-    if(empty(mb_strlen($_POST['unversity_name'])) && empty(mb_strlen($_POST['unit_name'])) && empty(mb_strlen($_POST['ssc_gpa'])) && !isset($_POST['ssc_group']) && empty(mb_strlen($_POST['hsc_gpa'])) && !isset($_POST['hsc_group']) && empty(mb_strlen($_POST['total_gpa'])) && empty(mb_strlen($_POST['admission_date']))){
+    if(empty($_POST['unversity_name']) && empty(mb_strlen($_POST['unit_name'])) && empty(mb_strlen($_POST['ssc_gpa'])) && !isset($_POST['ssc_group']) && empty(mb_strlen($_POST['hsc_gpa'])) && !isset($_POST['hsc_group']) && empty(mb_strlen($_POST['total_gpa'])) && empty(mb_strlen($_POST['admission_date']))){
         add_action( 'admin_notices', 'empty_field_callable_hndler' );
     }
-    elseif(empty(mb_strlen($_POST['unversity_name'])) || empty(mb_strlen($_POST['unit_name'])) || empty(mb_strlen($_POST['ssc_gpa'])) || !isset($_POST['ssc_group']) || empty(mb_strlen($_POST['hsc_gpa'])) || !isset($_POST['hsc_group']) || empty(mb_strlen($_POST['total_gpa'])) || empty(mb_strlen($_POST['admission_date']))){
+    elseif(empty($_POST['unversity_name']) || empty(mb_strlen($_POST['unit_name'])) || empty(mb_strlen($_POST['ssc_gpa'])) || !isset($_POST['ssc_group']) || empty(mb_strlen($_POST['hsc_gpa'])) || !isset($_POST['hsc_group']) || empty(mb_strlen($_POST['total_gpa'])) || empty(mb_strlen($_POST['admission_date']))){
         add_action( 'admin_notices', 'admission_info_admin_single_empty_field_notice' );
     }
     else{
-        $universityName = sanitize_text_field( $_POST['unversity_name']);
+        $universityInfo = sanitize_text_field($_POST['unversity_name']);
+        $universityInfoArr = explode(',-',$universityInfo);
+        $universityName = $universityInfoArr[0];
+        $post_link = $universityInfoArr[1];
         $unitName = sanitize_text_field( $_POST['unit_name']);
         $SscGpa = sanitize_text_field( $_POST['ssc_gpa']);
         $SscGrp = (isset($_POST['ssc_group']))? sanitize_text_field($_POST['ssc_group']): '';
@@ -386,14 +393,17 @@ if(isset($_POST['admission_info_save'])){
 
 // FORM UPDATE
 if(isset($_POST['admission_info_update'])){
-    if(empty(mb_strlen($_POST['unversity_name'])) && empty(mb_strlen($_POST['unit_name'])) && empty(mb_strlen($_POST['ssc_gpa'])) && !isset($_POST['ssc_group']) && empty(mb_strlen($_POST['hsc_gpa'])) && !isset($_POST['hsc_group']) && empty(mb_strlen($_POST['total_gpa'])) && empty(mb_strlen($_POST['admission_date']))){
+    if(empty($_POST['unversity_name']) && empty(mb_strlen($_POST['unit_name'])) && empty(mb_strlen($_POST['ssc_gpa'])) && !isset($_POST['ssc_group']) && empty(mb_strlen($_POST['hsc_gpa'])) && !isset($_POST['hsc_group']) && empty(mb_strlen($_POST['total_gpa'])) && empty(mb_strlen($_POST['admission_date']))){
         add_action( 'admin_notices', 'empty_field_callable_hndler' );
     }
-    elseif(empty(mb_strlen($_POST['unversity_name'])) || empty(mb_strlen($_POST['unit_name'])) || empty(mb_strlen($_POST['ssc_gpa'])) || !isset($_POST['ssc_group']) || empty(mb_strlen($_POST['hsc_gpa'])) || !isset($_POST['hsc_group']) || empty(mb_strlen($_POST['total_gpa'])) || empty(mb_strlen($_POST['admission_date']))){
+    elseif(empty($_POST['unversity_name']) || empty(mb_strlen($_POST['unit_name'])) || empty(mb_strlen($_POST['ssc_gpa'])) || !isset($_POST['ssc_group']) || empty(mb_strlen($_POST['hsc_gpa'])) || !isset($_POST['hsc_group']) || empty(mb_strlen($_POST['total_gpa'])) || empty(mb_strlen($_POST['admission_date']))){
         add_action( 'admin_notices', 'admission_info_admin_single_empty_field_notice' );
     }
     else{
-        $universityName = sanitize_text_field( $_POST['unversity_name']);
+        $universityInfo = sanitize_text_field( $_POST['unversity_name']);
+        $universityInfoArr = explode(',-',$universityInfo);
+        $universityName = $universityInfoArr[0];
+        $post_link = $universityInfoArr[1];
         $unitName = sanitize_text_field( $_POST['unit_name']);
         $SscGpa = sanitize_text_field( $_POST['ssc_gpa']);
         // ssc_group_data_collection();
