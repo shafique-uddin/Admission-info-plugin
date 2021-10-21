@@ -28,40 +28,38 @@ if(isset($_GET['edit'])){
 
 <form method="POST">
 
-
-<?php
-
-$args = array(
-    'post_type'=> 'post',
-    'orderby'    => 'ID',
-    'post_status' => 'publish',
-    'order'    => 'DESC',
-    'posts_per_page' => -1 // this will retrive all the post that is published 
-    );
-    $result = new WP_Query( $args );
-    while($result->have_posts()): $result->the_post(); 
-    
-    echo "<pre>";
-    var_dump(get_posts());
-    echo "</pre>";
-
-endwhile;
-
-die();
-
-?>
-
-
-
-
-
-
 <div class="mycampus-field mycampus-input-label">
     <div class="mycampus-title">
         <label for="university_name">University Name</label>
     </div>
     <div class="mycampus-input-field">
-        <input type="text" autocomplete="off" name="unversity_name" id="university_name" value="<?php if(isset( $mylink->universityName)) echo $mylink->universityName; ?>">
+        <select name="unversity_name" id="unversity_name">
+            <option value="" disabled selected>Please Choose Varsity Name.</option>
+
+            <?php
+                $args = array(
+                        'post_type'=> 'post',
+                        'orderby'    => 'ID',
+                        'post_status' => 'publish',
+                        'order'    => 'DESC',
+                        'posts_per_page' => -1
+                    );
+                $result = new WP_Query( $args );
+                if($result->have_posts()):
+                    while($result->have_posts()): $result->the_post(); 
+                        ?>
+                        <option value="<?php the_title(); echo ','; the_guid(); ?>"><?php the_title(); ?></option>
+                        <?php
+                    endwhile; 
+                else:?>
+                    <option value="" disabled selected>Please Post Before Insert All Data.</option>
+                    <?php
+                endif;
+            ?>
+        </select>
+
+
+        <!-- <input type="text" autocomplete="off" name="unversity_name" id="university_name" value="<?php // if(isset( $mylink->universityName)) echo $mylink->universityName; ?>"> -->
     </div>
     </div>
     <div class="mycampus-field mycampus-input-label">
@@ -185,3 +183,5 @@ die();
 
 </form>
 </div>
+
+<?php // endwhile; ?>
