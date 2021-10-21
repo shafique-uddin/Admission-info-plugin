@@ -7,12 +7,6 @@ if(isset($_GET['edit'])){
     $mylink = $wpdb->get_row( "SELECT * FROM $tbl_name WHERE id = $post_id_no" );
 }
 
-
-
-
-
-
-
 // $args = array(
 //         'post_type'=> 'post',
 //         'orderby'    => 'ID',
@@ -59,9 +53,18 @@ if(isset($_GET['edit'])){
     </div>
     <div class="mycampus-input-field">
         <select name="unversity_name" id="unversity_name">
-            <option value="" disabled selected>Please Choose Varsity Name.</option>
 
-            <?php
+
+
+        <?php 
+            if(isset($mylink->universityName)) { ?>
+                <option value="<?php echo $mylink->universityName; ?>" selected><?php echo $mylink->universityName; ?></option>
+        <?php 
+            } 
+            else { ?>
+                <option value="" disabled selected>Please Choose Varsity Name.</option>
+        <?php 
+            }       
                 $args = array(
                         'post_type'=> 'post',
                         'orderby'    => 'ID',
