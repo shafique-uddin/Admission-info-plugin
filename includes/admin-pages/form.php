@@ -56,15 +56,16 @@ if(isset($_GET['edit'])){
 
 
 
-        <?php 
-            if(isset($mylink->universityName)) { ?>
-                <option value="<?php echo $mylink->universityName; ?>" selected><?php echo $mylink->universityName; ?></option>
-        <?php 
-            } 
-            else { ?>
-                <option value="" disabled selected>Please Choose Varsity Name.</option>
-        <?php 
-            }       
+     
+            <option value="" disabled>Please Choose Varsity Name.</option>
+
+
+
+
+
+            
+
+            <?php      
                 $args = array(
                         'post_type'=> 'post',
                         'orderby'    => 'ID',

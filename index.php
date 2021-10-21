@@ -400,7 +400,14 @@ if(isset($_POST['admission_info_update'])){
         add_action( 'admin_notices', 'admission_info_admin_single_empty_field_notice' );
     }
     else{
-        $universityInfo = sanitize_text_field( $_POST['unversity_name']);
+
+
+echo "<pre>";
+var_dump($_POST['unversity_name']);
+echo "</pre>";
+die();
+
+        $universityInfo = sanitize_text_field($_POST['unversity_name']);
         $universityInfoArr = explode(',-',$universityInfo);
         $universityName = $universityInfoArr[0];
         $post_link = $universityInfoArr[1];
