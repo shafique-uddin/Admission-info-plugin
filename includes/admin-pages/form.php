@@ -57,7 +57,7 @@ if(isset($_GET['edit'])){
         <select name="unversity_name" id="unversity_name">
 
         <?php if(isset($mylink->universityName)): ?>
-            <option value="<?php echo $mylink->universityName; ?>" select><?php echo $mylink->universityName; ?></option>
+            <option value="<?php echo $mylink->universityName.',-'.$mylink->link; ?>" select><?php echo $mylink->universityName; ?></option>
         <?php else: ?>
             <option value="" selected disabled>Please Select University Name.</option>
         <?php endif; ?>

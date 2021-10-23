@@ -401,18 +401,9 @@ if(isset($_POST['admission_info_update'])){
     }
     else{
         $universityInfo = sanitize_text_field($_POST['unversity_name']);
-
-
-        if(count(explode(',-',$universityInfo))>1){
-            $universityInfoArr = explode(',-',$universityInfo);
-            $universityName = $universityInfoArr[0];
-            $post_link = $universityInfoArr[1];
-        }
-        else {
-            $universityName = $universityInfo;
-        }
-
-        
+        $universityInfoArr = explode(',-',$universityInfo);
+        $universityName = $universityInfoArr[0];
+        $post_link = $universityInfoArr[1];
         $unitName = sanitize_text_field( $_POST['unit_name']);
         $SscGpa = sanitize_text_field( $_POST['ssc_gpa']);
         // ssc_group_data_collection();
