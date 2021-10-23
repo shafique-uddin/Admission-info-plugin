@@ -6,6 +6,7 @@ $query = $wpdb->update(
     $admission_info_tbl_name,
     array(
         'universityName' => $universityName,
+        'link' => $post_link,
         'unitName' => $unitName,
         'sscGPA' => $SscGpa,
         'sscGROUP' => $SscGrp,

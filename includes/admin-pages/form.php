@@ -18,12 +18,14 @@ if(isset($_GET['edit'])){
 //     while($result->have_posts()): $result->the_post(); 
 
 //     echo "<pre>";
-//     var_dump(get_posts( ));
+//     // var_dump(get_posts());
+//     var_dump(get_the_title( ));
 //     echo "</pre>";
        
 //     endwhile; 
 
 //     wp_die();
+
 
 ?>
 
@@ -54,16 +56,12 @@ if(isset($_GET['edit'])){
     <div class="mycampus-input-field">
         <select name="unversity_name" id="unversity_name">
 
+        <?php if(isset($mylink->universityName)): ?>
+            <option value="<?php echo $mylink->universityName; ?>" select><?php echo $mylink->universityName; ?></option>
+        <?php else: ?>
+            <option value="" selected disabled>Please Select University Name.</option>
+        <?php endif; ?>
 
-
-     
-            <option value="" disabled>Please Choose Varsity Name.</option>
-
-
-
-
-
-            
 
             <?php      
                 $args = array(
