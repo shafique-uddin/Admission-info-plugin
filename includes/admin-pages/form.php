@@ -114,9 +114,10 @@ if(isset($_GET['edit'])){
         <?php 
             $ssc_group_list = array(
                 'all' => 'All',
-                'scienceHB' => 'Science (Higher Math + Biology)',
-                'scienceM' => 'Science (Higher Math)',
-                'scienceB' => 'Science (Biology)',
+                'scienceHB' => 'Science',
+                // 'scienceHB' => 'Science (Higher Math + Biology)',
+                // 'scienceM' => 'Science (Higher Math)',
+                // 'scienceB' => 'Science (Biology)',
                 'arts' => 'Arts',
                 'commerce' => 'Commerce'
             );
@@ -129,7 +130,7 @@ if(isset($_GET['edit'])){
                     $selected = '';
                 }
                 ?>
-                <input type="radio" <?php echo $selected; ?> name="ssc_group" value="<?php echo $ssc_group_list_key; ?>" id="sscGroup_<?php echo $ssc_group_list_value; ?>"><label for="sscGroup_<?php echo $ssc_group_list_value; ?>"><?php echo $ssc_group_list_value; ?></label> <br>
+                <input type="checkbox" <?php echo $selected; ?> name="ssc_group" value="<?php echo $ssc_group_list_key; ?>" id="sscGroup_<?php echo $ssc_group_list_value; ?>"><label for="sscGroup_<?php echo $ssc_group_list_value; ?>"><?php echo $ssc_group_list_value; ?></label> <br>
         <?php   } ?>
         </div>
     </div>
@@ -151,9 +152,10 @@ if(isset($_GET['edit'])){
         $hsc_group_list = array(
 
             'all' => 'All',
-            'scienceHB' => 'Science (Higher Math + Biology)',
-            'scienceM' => 'Science (Higher Math)',
-            'scienceB' => 'Science (Biology)',
+            'scienceHB' => 'Science',
+            // 'scienceHB' => 'Science (Higher Math + Biology)',
+            // 'scienceM' => 'Science (Higher Math)',
+            // 'scienceB' => 'Science (Biology)',
             'arts' => 'Arts',
             'commerce' => 'Commerce'
         );
@@ -167,7 +169,7 @@ if(isset($_GET['edit'])){
             }
 
             ?>
-            <input type="radio" <?php echo $selected; ?> name="hsc_group" value="<?php echo $hsc_group_list_key; ?>" id="hscGroup_<?php echo $hsc_group_list_value; ?>"><label for="hscGroup_<?php echo $hsc_group_list_value; ?>"><?php echo $hsc_group_list_value; ?></label> <br>
+            <input type="checkbox" <?php echo $selected; ?> name="hsc_group" value="<?php echo $hsc_group_list_key; ?>" id="hscGroup_<?php echo $hsc_group_list_value; ?>"><label for="hscGroup_<?php echo $hsc_group_list_value; ?>"><?php echo $hsc_group_list_value; ?></label> <br>
         <?php   } ?>
         </div>
     </div>
