@@ -34,6 +34,10 @@ $results = $wpdb->get_results(
 	$deletelink = admin_url('admin.php?page=admissioninfo&del='.$everyRow->id);
 
   switch ($everyRow->hscGROUP) {
+    case 'all':
+      $section = "Science, Arts, Commerce";
+      break;
+
     case 'scienceHB':
       $section = "Science";
       break;
