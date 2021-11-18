@@ -19,6 +19,7 @@ $results = $wpdb->get_results(
     <tr>
       <th scope="col">Varsity Name</th>
       <th scope="col">Unit</th>
+      <th scope="col">Section</th>
       <th scope="col">Admission Date</th>
       <th scope="col">Publish</th>
       <th scope="col">Action</th>
@@ -35,6 +36,7 @@ $results = $wpdb->get_results(
     <tr>
       <td><?php echo $everyRow->universityName; ?></td>
       <td><?php echo $everyRow->unitName; ?></td>
+      <td><?php echo $everyRow->hscGROUP; ?></td>
       <td><?php echo $everyRow->admission_date; ?></td>
       <td><?php echo $everyRow->postPublish; ?></td>
 	    <td>
