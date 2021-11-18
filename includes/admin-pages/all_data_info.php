@@ -32,11 +32,28 @@ $results = $wpdb->get_results(
 <?php foreach ($results as $everyRow) {
 	$updatelink = admin_url('admin.php?page=add-new-varsity-info&edit='.$everyRow->id);
 	$deletelink = admin_url('admin.php?page=admissioninfo&del='.$everyRow->id);
+
+  switch ($everyRow->hscGROUP) {
+    case 'scienceHB':
+      $section = "Science";
+      break;
+
+    case 'arts':
+      $section = "Arts";
+      break;
+
+    case 'commerce':
+      $section = "Commerce";
+      break;
+    
+    default:
+      break;
+  }
 	?>
     <tr>
       <td><?php echo $everyRow->universityName; ?></td>
       <td><?php echo $everyRow->unitName; ?></td>
-      <td><?php echo $everyRow->hscGROUP; ?></td>
+      <td><?php echo $section; ?></td>
       <td><?php echo $everyRow->admission_date; ?></td>
       <td><?php echo $everyRow->postPublish; ?></td>
 	    <td>
