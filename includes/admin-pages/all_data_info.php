@@ -33,9 +33,14 @@ $results = $wpdb->get_results(
 	$updatelink = admin_url('admin.php?page=add-new-varsity-info&edit='.$everyRow->id);
 	$deletelink = admin_url('admin.php?page=admissioninfo&del='.$everyRow->id);
 
-  switch ($everyRow->hscGROUP) {
+
+
+  $hsc_grp_name = explode(',',$everyRow->hscGROUP);
+  foreach ($hsc_grp_name as $value) {  
+
+  switch ($value) {
     case 'all':
-      $section = "Science, Arts, Commerce";
+      $section = "all";
       break;
 
     case 'scienceHB':
@@ -53,11 +58,12 @@ $results = $wpdb->get_results(
     default:
       break;
   }
+}
 	?>
     <tr>
       <td><?php echo $everyRow->universityName; ?></td>
       <td><?php echo $everyRow->unitName; ?></td>
-      <td><?php echo $section; ?></td>
+      <td><?php echo ucwords($everyRow->hscGROUP); ?></td>
       <td><?php echo $everyRow->admission_date; ?></td>
       <td><?php echo $everyRow->postPublish; ?></td>
 	    <td>

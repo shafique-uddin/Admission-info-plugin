@@ -327,6 +327,8 @@ function ssc_group_data_collection(){
                 $SscGrp .= ', ';
             }
         }
+
+        return $SscGrp;
     }
     else {
         add_action( 'admin_notices', 'empty_field_callable_hndler' );
@@ -355,6 +357,8 @@ function hsc_group_data_collection(){
                 $HscGrp .= ', ';
             }
         }
+
+        return $HscGrp;
     }
     else {
         add_action( 'admin_notices', 'empty_field_callable_hndler' );
@@ -366,10 +370,6 @@ function hsc_group_data_collection(){
 // FORM SUBMIT AND CHECKING
 if(isset($_POST['admission_info_save'])){
 
-
-    var_dump($_POST['ssc_group']);
-    wp_die();
-    
     if(empty($_POST['unversity_name']) && empty(mb_strlen($_POST['unit_name'])) && empty(mb_strlen($_POST['ssc_gpa'])) && !isset($_POST['ssc_group']) && empty(mb_strlen($_POST['hsc_gpa'])) && !isset($_POST['hsc_group']) && empty(mb_strlen($_POST['total_gpa'])) && empty(mb_strlen($_POST['admission_date']))){
         add_action( 'admin_notices', 'empty_field_callable_hndler' );
     }
@@ -383,11 +383,11 @@ if(isset($_POST['admission_info_save'])){
         $post_link = $universityInfoArr[1];
         $unitName = sanitize_text_field( $_POST['unit_name']);
         $SscGpa = sanitize_text_field( $_POST['ssc_gpa']);
-        $SscGrp = (isset($_POST['ssc_group']))? sanitize_text_field($_POST['ssc_group']): '';
-        // ssc_group_data_collection();
+        // $SscGrp = (isset($_POST['ssc_group']))? sanitize_text_field($_POST['ssc_group']): '';
+        $SscGrp = ssc_group_data_collection();
         $HscGpa = sanitize_text_field( $_POST['hsc_gpa']);
-        // hsc_group_data_collection();
-        $HscGrp = (isset($_POST['hsc_group']))? sanitize_text_field($_POST['hsc_group']): '';
+        // $HscGrp = (isset($_POST['hsc_group']))? sanitize_text_field($_POST['hsc_group']): '';
+        $HscGrp = hsc_group_data_collection();
         $totalGpa = sanitize_text_field( $_POST['total_gpa']);
         $admissionDate = sanitize_text_field( $_POST['admission_date']);
         $post_publish_date = sanitize_text_field( $_POST['publish_date']);
@@ -411,11 +411,11 @@ if(isset($_POST['admission_info_update'])){
         $post_link = $universityInfoArr[1];
         $unitName = sanitize_text_field( $_POST['unit_name']);
         $SscGpa = sanitize_text_field( $_POST['ssc_gpa']);
-        // ssc_group_data_collection();
-        $SscGrp = (isset($_POST['ssc_group']))? sanitize_text_field($_POST['ssc_group']): '';
+        $SscGrp = ssc_group_data_collection();
+        // $SscGrp = (isset($_POST['ssc_group']))? sanitize_text_field($_POST['ssc_group']): '';
         $HscGpa = sanitize_text_field( $_POST['hsc_gpa']);
-        // hsc_group_data_collection();
-        $HscGrp = (isset($_POST['hsc_group']))? sanitize_text_field($_POST['hsc_group']): '';
+        $HscGrp = hsc_group_data_collection();
+        // $HscGrp = (isset($_POST['hsc_group']))? sanitize_text_field($_POST['hsc_group']): '';
         $totalGpa = sanitize_text_field( $_POST['total_gpa']);
         $admissionDate = sanitize_text_field( $_POST['admission_date']);
         $post_id_no = sanitize_text_field( $_POST['post_id']);
