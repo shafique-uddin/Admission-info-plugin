@@ -365,6 +365,11 @@ function hsc_group_data_collection(){
 
 // FORM SUBMIT AND CHECKING
 if(isset($_POST['admission_info_save'])){
+
+
+    var_dump($_POST['ssc_group']);
+    wp_die();
+    
     if(empty($_POST['unversity_name']) && empty(mb_strlen($_POST['unit_name'])) && empty(mb_strlen($_POST['ssc_gpa'])) && !isset($_POST['ssc_group']) && empty(mb_strlen($_POST['hsc_gpa'])) && !isset($_POST['hsc_group']) && empty(mb_strlen($_POST['total_gpa'])) && empty(mb_strlen($_POST['admission_date']))){
         add_action( 'admin_notices', 'empty_field_callable_hndler' );
     }
